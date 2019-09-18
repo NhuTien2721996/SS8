@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    fieldset {
+        width: 300px;
+    }
+</style>
+<body>
+<fieldset>
+    <legend>Human</legend>
+    <button onclick="AdamEat(adam)">Adam</button>
+    <button onclick="EvaEat(eva)">Eva</button>
+    <p id="outputAdam"></p>
+    <p id="outputEva"></p>
+    <p id="outApple"></p>
+</fieldset>
+<script>
+    let Apple = function (weight) {
+        this.weight = weight;
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.setWeight = function (value) {
+            this.weight = value;
+        }
+        this.decreaseWeight = function () {
+            this.weight--;
+
+        }
+    };
+    let Human = function (name, gerder, weight, said) {
+        this.name = name;
+        this.gerder = gerder;
+        this.weight = weight;
+        this.said = said;
+        this.getName = function () {
+            return this.name;
+        };
+        this.setName = function (value) {
+            this.name = value;
+        };
+        this.getGerder = function () {
+            return this.gerder;
+        };
+        this.setGerder = function (value) {
+            this.gerder = value;
+        };
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.setWeight = function (value) {
+            this.weight = value;
+        };
+        this.getSaid = function () {
+            return this.said;
+        };
+        this.setSaid = function (value) {
+            this.said = value;
+        };
+        this.increaseWeight = function () {
+            this.weight++;
+        };
+
+    }
+    let adam = new Human("Adam", "Male", 70, "I'm Adam");
+    let eva = new Human("Eva", "female", 50, "I'm Eva");
+    let apple = new Apple(10);
+    // console.log(adam.getSaid());
+    //console.log(eva.getSaid());
+    function AdamEat(adam) {
+        apple.decreaseWeight();
+        adam.increaseWeight();
+        if (apple.getWeight() <= 0) {
+            alert("Hết táo rồi");
+        }
+        display();
+    };
+
+    function EvaEat(eva) {
+        apple.decreaseWeight();
+        eva.increaseWeight();
+        if (apple.getWeight() <= 0) {
+            alert("Hết táo rồi");
+        }
+        display();
+
+    }
+
+    function display() {
+        document.getElementById("outputAdam").innerText = "Cân nặng của Adam là:" + adam.getWeight();
+        document.getElementById("outputEva").innerText = "Cân nặng của Eva là:" + eva.getWeight();
+        document.getElementById("outApple").innerText = "Số lượng táo là:" + apple.getWeight();
+    }
+
+    display();
+
+</script>
+</body>
+</html>
